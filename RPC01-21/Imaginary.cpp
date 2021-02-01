@@ -3,11 +3,11 @@ using namespace std;
 typedef long long ll;
 
 int main(){
-    #ifndef ONLINE_JUDGE 
+    /*#ifndef ONLINE_JUDGE 
         freopen("input.txt", "r", stdin); 
         freopen("error.txt", "w", stderr); 
         freopen("output.txt", "w", stdout); 
-    #endif 
+    #endif */
     ll a, b;
     while(cin>>a >>b && (a|b)){
         ll res = b%4;
@@ -18,6 +18,6 @@ int main(){
         cout<<'\n';
         
     }
-    cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl; 
+    //cerr << "time taken : " << (float)clock() / CLOCKS_PER_SEC << " secs" << endl; 
     return 0;   
 }

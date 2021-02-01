@@ -13,7 +13,7 @@ int main()
 #endif 
   
     int t = 1; 
-    /*is Single Test case?*/ cin >> t; 
+    /*is Single Test case?*/// cin >> t; 
     while (t--) { 
         solve(); 
         cout << "\n"; 
@@ -24,5 +24,12 @@ int main()
 } 
 void solve() 
 { 
-    cout<<"hola mundo";
+    stack<int> p, w;
+    p.push(3);
+    p.push(4);
+    p.push(23);
+    p.push(33);
+    cout<<p.size()<<endl;
+    p.swap(w);
+    cout<<p.size();
 }
