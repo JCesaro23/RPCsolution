@@ -1,0 +1,144 @@
+
+labdcc.fceia.unr.edu.ar
+5-6 minutos
+
+A:
+
+Nota: Creemos que existen inputs para los cuales el output que tendrias 
+que responder es demasiado grande (algo asi como 10^10 * 50 caracteres). 
+Sin embargo, parece que este input no esta en este problema.
+Lo que hicimos fue construir un trie con las palabras del diccionario,
+luego para cada palabra dada como consulta, evaluamos si existe en el 
+trie, y si existe, la imprimimos. Si no existe, entonces lanzamos una
+fuerza bruta para buscar si existe alguna palabra con distancia a lo 
+sumo dos en el trie. El "estado" de la fuerza bruta es (posicion, 
+diferencia con la string original, nodo del trie actual). La fuerza
+bruta lo que hace es ir construyendo la string candidata, que luego
+insertamos en un vector de strings con las soluciones.
+
+B:
+
+Emparejarte con el tipo de mayor fuerza es optimo. Sea M la suma de tu 
+grupo. Ahora hay que emparejar a los restantes. Empezando desde el de 
+mayor fuerza, emparejarlo con el de mayor fuerza tal que su suma es 
+menor que M (quedan abajo tuyo), si no existe alguno que cumpla esa
+propiedad, entonces emparejarlo con el segundo de mayor fuerza 
+disponible.
+
+C:
+
+El problema te pide que "mires" la molecula como si el atomo "menos 
+importante" esta exactamente detras del carbono.
+Esa vista es equivalente a la "proyectar" los atomos en un plano 
+ortogonal a la recta (OE) que pasa por el carbono (O) y el "atomo menos 
+importante" (E).
+<-- Para entender Como hacer esta proyeccion es mas facil observar el 
+codigo, pero no es dificil.
+Al hacerlo queremos saber el "sentido" de las proyecciones 'PA' y 'PB' 
+de los atomos mÃ¡s "importantes".
+Para esto usaremos el prodcuto vectorial de estas proyecciones, que 
+nos dara:
+- el vector nulo (en cuyo caso la respuesta es "No chiral centre")
+- un vector paralelo a OE
+Lo que nos interesa ahora es si este vector esta o no en la misma
+direccion que OE, por regla de la mano derecha.
+Vemos esto con un producto escalar.
+NOTA:
+Es posible que en el input te den atomos con la misma "importancia",
+es un caso que no esta claro y debemos responder "No chiral centre".
+
+D:
+
+Probar con (r+1, p) y con (r, p+1) en la formula. Si son iguales va
+"Either", si no, fijate el mayor.
+
+E:
+
+Tirar un BFS o DFS desde cada nodo fuente. Obtener la suma de pesos
+de aquellos nodos a los cuales no podes llegar.
+
+F:
+
+De cada componente conexa te importa solamente su peso total y el 
+conjunto de partes de secretos que saben. Despues, podes hacer una
+programaciÃ³n dinamica clasica (mochila) con estado (pos, bitmask) que
+te devuelva el menor coste de lograr llegar a la bitmask completa.
+
+G:
+
+Usar el truquito de la tablita aditiva, si queres sumar k a un rango
+[i, j], tenes que sumar k en la posiciÃ³n i, restar k en la posicion
+j+1 y procesar todo al final como una tabla aditiva.
+Una vez que tenes eso, recorrerlos todos para ver quien maximiza 
+i*A[i].
+
+H:
+
+Hacer lo que dice el enunciado. Sirve usar un arreglo de booleanos e
+ir marcando cuales valores fueron usados en cada fila y cada columna,
+si alguna vez marcas el mismo valor como usado dos veces entonces ya
+no es un latin square.
+
+I:
+
+Probar todo.
+
+J:
+
+We want to find a consecutive subsequence which maximizes the absolute 
+value of the difference between the amount of 'R' and the amount of 'B'.
+We will solve the problem for each of the cases:
+- Maximize 'R-B'.
+- Maximize 'B-R'.
+The problems are analogue to each other
+To solve the first problem we calculate the value (difference between 
+'R's and 'B's) for each prefix of the string
+Then we want a pair of indices l and r, l < r, such that:
+- The difference between value for r and value for l-1 is maximal
+- index l is minimal
+- index r is minimal
+To solve this in nlogn we can use a set of pairs (value, index) to 
+store the value for each prefix
+
+K:
+
+For (1 <= i <= n) we'll just calculate how much it will cost to change 
+the face 'i', and get the minimum possible cost.
+Let {v1, v2, ..., v6} be the values of the dice faces, which initially 
+is {1, 2, 3, 4, 5, 6}
+And let {p1, p2, .., p6} be the probability for each face to appear.
+The expected value of the dice is E = v1*p1 + v2*p2 + ... v6*p6;
+We want E to become 3.5
+So for the face 'i' we just calculate the sum for the other faces and 
+store it in S.
+(i.e for the face '2' we calculate: S = v1*p1 + v3*p3 + v4*p4 + v5*p5 
++ v6*p6)
+We want to change v_i to v' so: 3.5 = S + p_i * v'
+Then v' = (3.5 - S)/p_i;
+Given that, the cost of the operation results in (cost_i = abs(v_i - v'))
+We do this for each i, and we are done.
+
+L:
+
+Probar todos los pares que tienen sentido, si tenes un par (x, y), 
+entonces lo que querÃ©s es que S / (x+y) sea entero, o que el resto sea
+x.
+
+M:
+
+First think how you could solve the problem for a 10^6 digit number 
+without the "Forbidden Zero" restriction.
+The solution is greedy, searching from the right for the first "not 9" 
+digit, adding 1 to it and changing all trailing '9' to '0'.
+And if we have a number like "99...9" the next one is "100...0"
+The same greedy works for this problem, but instead of changing '9's to 
+'0's we change them to '1's.
+The demonstration is up to the reader
+
+Cualquier cosita:
+
+brian.morris.e97@gmail.com
+ivan_diaz_92@hotmail.com
+maxiredigonda@gmail.com
+
+
