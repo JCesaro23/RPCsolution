@@ -3,14 +3,8 @@ using namespace std;
 typedef long long ll;
 
 int main(){
-    /*#ifndef ONLINE_JUDGE 
-        freopen("input.txt", "r", stdin); 
-        freopen("error.txt", "w", stderr); 
-        freopen("output.txt", "w", stdout); 
-    #endif */
     int T, Q, q, val, valMAX, valMIN;
-    
-    
+       
     multiset<int>:: iterator b;
     multiset<int>:: iterator rb;
     scanf("%d", &T);
