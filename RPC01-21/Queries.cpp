@@ -1,44 +1,53 @@
+/*******************************************************
+Name Problem:Queries on the Stack
+Problem Category:STL
+Problem Tester: Julio Cesar Mamani Villena.
+Email: mamanivillenajc@gmail.com
+*******************************************************/
 #include<bits/stdc++.h>
+#define PI 2*acos(0.0)
+#define MOD 1000000007
+#define EPS 1e-9
+#define all(x) x.begin(),x.end()
+#define fast(); ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL); 
 using namespace std;
-typedef long long ll;
-
-int main(){
-    int T, Q, q, val, valMAX, valMIN;
-       
-    multiset<int>:: iterator b;
-    multiset<int>:: iterator rb;
+void solve(){
+    int T, Q, q, val;
     scanf("%d", &T);
     while(T--){
-        stack<int> p;
-        multiset<int> mt;
+        stack<int> stk;
+        stack<pair<int,int>> pstk;
+       
         scanf("%d", &Q);
-        
         while(Q--){
             scanf("%d", &q);
-            if(q==1){
+
+            if(q == 1){
                 scanf("%d", &val);
-                p.push(val);
-                mt.insert(val);
-            }else if(q==2){
-                if(!p.empty()){
-                    mt.erase(mt.find(p.top()));
-                    p.pop();
-                }
-            }else if(q==3){
-                if(p.empty()){
-                    cout<<"Empty!\n";
+                if(stk.empty()){
+                    pstk.push(make_pair(val,val));
                 }else{
-                    b = mt.begin();
-                    valMIN = *b;
-                    int endd = mt.size() - 1;
-                    advance(b, endd);
-                    valMAX = *b;
-                    printf("%d\n",abs(valMIN-valMAX));
-                    
+                    pstk.push( make_pair( max(val, pstk.top().first),min(val, pstk.top().second) ) );
+                }
+                stk.push(val);
+            }else if(q == 2){
+                if(!stk.empty()){
+                    stk.pop();
+                    pstk.pop();
+                }
+            }else if(q == 3){
+                if(stk.empty()){
+                    printf("Empty!\n");
+                }else{
+                    pair<int, int> tope = pstk.top();
+                    printf("%d\n", abs(tope.first - tope.second));
                 }
             }
         }
     }
-    
-    return 0;   
+}
+int main(){
+    fast();
+    solve();
+    return 0;
 }
