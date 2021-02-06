@@ -1,0 +1,7 @@
+#	archivos de salida y .exe
+**/RPC*/*.exe
+**/RPC*/*.in
+**/RPC*/*.out
+**/RPC*/*.txt
+**/RPC*/*.pdf
+**/RPC*/*.class
